@@ -1,0 +1,42 @@
+Displaying text in Processing
+from Dan Shiffman's Strings and Text tutorial
+
+1. Declare a PFont object
+   Ex: PFont f;
+2. Create the font using createFont
+   Do this in setup() - you don't want to repeat it endlessly in draw()
+   PFont.list() shows the available fonts
+   Ex: String[] fList = f.list();
+       for (int i = 0; i < fList.length; i++) {
+         println(fList[i]);
+       }
+   You can specify the size and whether to use anti-aliasing
+   Ex: f = createFont("Courier", 24, true);
+3. Specify the font using textFont()
+   Takes one or two arguments: font variable & size
+     If size arg is missing, it uses the size specified when the font was created
+   Ex: textFont(f, 36);
+4. fill() specifies the font's color
+   Ex: fill(255, 255, 0);  //Yellow
+5. Call text() to display text
+   text() takes 3 args: a string, x coordinate, y coordinate
+   Ex:  text("Hello world!", 50, 75);
+
+Shiffman's example:
+PFont f;                       // STEP 1 Declare PFont variable
+  
+void setup() {
+  size(200,200);
+  f = createFont("Arial",16,true); // STEP 2 Create Font
+}
+
+void draw() {
+  background(255);
+  textFont(f,16);              // STEP 3 Specify font to be used
+  fill(0);                     // STEP 4 Specify font color 
+  text("Hello Strings!",10,100);   // STEP 5 Display Text
+}
+
+You can also use the Create Font on the Tools menu. This creates a VLW file and puts it in your data directory. Use loadFont() to load it.
+3x: f = loadFont("ArialMT-16.vlw");
+   
